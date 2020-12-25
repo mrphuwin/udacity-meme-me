@@ -19,6 +19,16 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ifw-Xh-sW4">
                                 <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                             </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6yR-om-fZA">
+                                <rect key="frame" x="10" y="69" width="394" height="18.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7Xs-C8-ost" userLabel="Bottom Text Field">
+                                <rect key="frame" x="10" y="769.5" width="394" height="18.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="etr-l2-PnT">
                                 <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
@@ -42,16 +52,27 @@
                         <constraints>
                             <constraint firstItem="etr-l2-PnT" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="95h-DK-6rG"/>
                             <constraint firstItem="ifw-Xh-sW4" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Ahy-97-9ei"/>
+                            <constraint firstItem="6yR-om-fZA" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="CUi-Qp-WTA"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6yR-om-fZA" secondAttribute="trailing" constant="10" id="Fez-36-ABO"/>
+                            <constraint firstItem="7Xs-C8-ost" firstAttribute="bottom" secondItem="ifw-Xh-sW4" secondAttribute="bottom" constant="-25" id="Oc9-U7-Gsw"/>
                             <constraint firstItem="etr-l2-PnT" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Qxc-qc-loG"/>
                             <constraint firstItem="ifw-Xh-sW4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Vkv-e0-fOU"/>
                             <constraint firstItem="etr-l2-PnT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Xf5-lP-e8O"/>
+                            <constraint firstItem="6yR-om-fZA" firstAttribute="top" secondItem="ifw-Xh-sW4" secondAttribute="top" constant="25" id="ZNw-zN-sA7"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ifw-Xh-sW4" secondAttribute="trailing" id="bXL-VK-ap0"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="7Xs-C8-ost" secondAttribute="trailing" constant="10" id="c0E-3g-fgt"/>
+                            <constraint firstItem="7Xs-C8-ost" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="ciV-pA-KD8"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6yR-om-fZA" secondAttribute="trailing" constant="158" id="hZ6-yj-ZRa"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6yR-om-fZA" secondAttribute="trailing" constant="10" id="iDE-CD-d8s"/>
+                            <constraint firstItem="6yR-om-fZA" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="p9B-0S-8bX"/>
                             <constraint firstItem="ifw-Xh-sW4" firstAttribute="bottom" secondItem="etr-l2-PnT" secondAttribute="top" id="tUD-9u-faJ"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bottomTextField" destination="7Xs-C8-ost" id="gkt-ye-oq0"/>
                         <outlet property="cameraButton" destination="qkX-Cb-U5a" id="PLs-AF-I22"/>
                         <outlet property="imagePickerView" destination="ifw-Xh-sW4" id="QPi-gy-pYT"/>
+                        <outlet property="topTextField" destination="6yR-om-fZA" id="1nn-LU-PAl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
