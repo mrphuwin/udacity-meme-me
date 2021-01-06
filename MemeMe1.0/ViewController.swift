@@ -15,6 +15,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var imagePickerView: UIImageView!
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
+    weak var currentTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,15 +81,26 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     func subscribeToKeyboardNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     func unsubscribeFromKeyboardNotifications() {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     // When the keyboardWillShow notification is received, shift the view's frame up
     @objc func keyboardWillShow(_ notification:Notification) {
-        view.frame.origin.y -= getKeyboardHeight(notification)
+        if currentTextField == bottomTextField {
+            view.frame.origin.y -= getKeyboardHeight(notification)
+        }
+    }
+    
+    // When the keyboardWillHide notification is received, shift the view's frame down to its original position
+    @objc func keyboardWillHide(_ notification:Notification) {
+        if currentTextField == bottomTextField {
+            view.frame.origin.y = 0
+        }
     }
 
     func getKeyboardHeight(_ notification:Notification) -> CGFloat {
@@ -102,6 +114,7 @@ extension ViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         // clear the text field when the user begins editing
         textField.text = ""
+        currentTextField = textField
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
