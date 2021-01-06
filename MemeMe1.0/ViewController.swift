@@ -8,6 +8,9 @@
 import UIKit
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    let DEFAULT_TOP_TEXT = "TOP"
+    let DEFAULT_BOTTOM_TEXT = "BOTTOM"
+
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var imagePickerView: UIImageView!
     @IBOutlet weak var topTextField: UITextField!
@@ -31,12 +34,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             button.delegate = self
         }
         
-        setupTextField(topTextField, "TOP")
-        setupTextField(bottomTextField, "BOTTOM")
+        setupTextField(topTextField, DEFAULT_TOP_TEXT)
+        setupTextField(bottomTextField, DEFAULT_BOTTOM_TEXT)
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
+        // disable the camera button, if needed
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
     }
     
@@ -68,22 +72,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
 extension ViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
+        // clear the text field when the user begins editing
         textField.text = ""
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        // dismiss the keyboard when the user presses return
         textField.resignFirstResponder()
         return true
-    }
-
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        
-        // Construct the text that will be in the field if this change is accepted
-        var newText = textField.text! as NSString
-        newText = newText.replacingCharacters(in: range, with: string) as NSString
-        
-        textField.text = (newText as String).uppercased()
-        
-        return false
     }
 }
