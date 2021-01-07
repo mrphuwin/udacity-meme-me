@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,11 +17,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ifw-Xh-sW4">
-                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="6yR-om-fZA">
-                                <rect key="frame" x="10" y="69" width="394" height="18.5"/>
+                                <rect key="frame" x="10" y="113" width="394" height="18.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
@@ -30,7 +30,15 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="etr-l2-PnT">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ljg-nw-4Od" userLabel="Top Toolbar">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <items>
+                                    <barButtonItem image="square.and.arrow.up" catalog="system" id="Cw7-WR-lwO" userLabel="share button"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="tgR-sg-fi2"/>
+                                    <barButtonItem title="Cancel" id="CO3-GM-vQi" userLabel="cancel button"/>
+                                </items>
+                            </toolbar>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="etr-l2-PnT" userLabel="Bottom Toolbar">
                                 <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="ZOj-fs-2T5"/>
@@ -39,7 +47,7 @@
                                             <action selector="pickCameraImage:" destination="BYZ-38-t0r" id="vkk-OO-x4Q"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem title="Album" id="UTT-kt-raF" userLabel="photo library button">
+                                    <barButtonItem title="Album" id="UTT-kt-raF" userLabel="album button">
                                         <connections>
                                             <action selector="pickAlbumImage:" destination="BYZ-38-t0r" id="dU5-aQ-GVD"/>
                                         </connections>
@@ -52,21 +60,23 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="etr-l2-PnT" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="95h-DK-6rG"/>
-                            <constraint firstItem="ifw-Xh-sW4" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Ahy-97-9ei"/>
+                            <constraint firstItem="ifw-Xh-sW4" firstAttribute="top" secondItem="ljg-nw-4Od" secondAttribute="bottom" id="Ahy-97-9ei"/>
                             <constraint firstItem="6yR-om-fZA" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="CUi-Qp-WTA"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6yR-om-fZA" secondAttribute="trailing" constant="10" id="Fez-36-ABO"/>
                             <constraint firstItem="7Xs-C8-ost" firstAttribute="bottom" secondItem="ifw-Xh-sW4" secondAttribute="bottom" constant="-25" id="Oc9-U7-Gsw"/>
                             <constraint firstItem="etr-l2-PnT" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Qxc-qc-loG"/>
+                            <constraint firstItem="ljg-nw-4Od" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="UEM-Ea-M4m"/>
                             <constraint firstItem="ifw-Xh-sW4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Vkv-e0-fOU"/>
                             <constraint firstItem="etr-l2-PnT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Xf5-lP-e8O"/>
                             <constraint firstItem="6yR-om-fZA" firstAttribute="top" secondItem="ifw-Xh-sW4" secondAttribute="top" constant="25" id="ZNw-zN-sA7"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ifw-Xh-sW4" secondAttribute="trailing" id="bXL-VK-ap0"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="7Xs-C8-ost" secondAttribute="trailing" constant="10" id="c0E-3g-fgt"/>
                             <constraint firstItem="7Xs-C8-ost" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="ciV-pA-KD8"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6yR-om-fZA" secondAttribute="trailing" constant="158" id="hZ6-yj-ZRa"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6yR-om-fZA" secondAttribute="trailing" constant="10" id="iDE-CD-d8s"/>
                             <constraint firstItem="6yR-om-fZA" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="p9B-0S-8bX"/>
+                            <constraint firstItem="ljg-nw-4Od" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="rA6-cg-mtl"/>
                             <constraint firstItem="ifw-Xh-sW4" firstAttribute="bottom" secondItem="etr-l2-PnT" secondAttribute="top" id="tUD-9u-faJ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ljg-nw-4Od" secondAttribute="trailing" id="vMM-WH-qFc"/>
                         </constraints>
                     </view>
                     <connections>
@@ -83,6 +93,7 @@
     </scenes>
     <resources>
         <image name="camera" catalog="system" width="128" height="94"/>
+        <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
