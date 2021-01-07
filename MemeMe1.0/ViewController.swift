@@ -12,6 +12,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     let DEFAULT_BOTTOM_TEXT = "BOTTOM"
 
     @IBOutlet weak var cameraButton: UIBarButtonItem!
+    @IBOutlet weak var shareButton: UIBarButtonItem!
     @IBOutlet weak var imagePickerView: UIImageView!
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
@@ -42,7 +43,17 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func resetMeme() {
         topTextField.text = DEFAULT_TOP_TEXT
         bottomTextField.text = DEFAULT_BOTTOM_TEXT
-        imagePickerView.image = nil
+        setImage(nil)
+    }
+    
+    func setImage(_ image: UIImage?) {
+        if let image = image {
+            imagePickerView.image = image
+            shareButton.isEnabled = true
+        } else {
+            imagePickerView.image = nil
+            shareButton.isEnabled = false
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -79,7 +90,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[.originalImage] as? UIImage {
-            imagePickerView.image = image
+            setImage(image)
             dismiss(animated: true, completion: nil)
         }
     }
@@ -87,6 +98,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
+    
+    // MARK: Keyboard show/hide notification handling
     
     func subscribeToKeyboardNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
