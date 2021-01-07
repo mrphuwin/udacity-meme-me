@@ -20,7 +20,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        func setupTextField(_ button: UITextField, _ text: String) {
+        func setupTextField(_ button: UITextField) {
             let memeTextAttributes: [NSAttributedString.Key: Any] = [
 //                NSAttributedString.Key.strokeColor: UIColor.black,
 //                NSAttributedString.Key.backgroundColor: UIColor.red,
@@ -31,14 +31,19 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             
             button.defaultTextAttributes = memeTextAttributes
             button.textAlignment = .center
-            button.text = text
             button.delegate = self
         }
         
-        setupTextField(topTextField, DEFAULT_TOP_TEXT)
-        setupTextField(bottomTextField, DEFAULT_BOTTOM_TEXT)
+        setupTextField(topTextField)
+        setupTextField(bottomTextField)
+        resetMeme()
     }
     
+    func resetMeme() {
+        topTextField.text = DEFAULT_TOP_TEXT
+        bottomTextField.text = DEFAULT_BOTTOM_TEXT
+        imagePickerView.image = nil
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         // Sign up to be notified when the keyboard appears
@@ -54,6 +59,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         unsubscribeFromKeyboardNotifications()
     }
     
+    @IBAction func cancel(_ sender: Any) {
+        resetMeme()
+    }
+        
     @IBAction func pickAlbumImage(_ sender: Any) {
         let picker = UIImagePickerController()
         picker.delegate = self

@@ -35,7 +35,11 @@
                                 <items>
                                     <barButtonItem image="square.and.arrow.up" catalog="system" id="Cw7-WR-lwO" userLabel="share button"/>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="tgR-sg-fi2"/>
-                                    <barButtonItem title="Cancel" id="CO3-GM-vQi" userLabel="cancel button"/>
+                                    <barButtonItem title="Cancel" id="CO3-GM-vQi" userLabel="cancel button">
+                                        <connections>
+                                            <action selector="cancel:" destination="BYZ-38-t0r" id="Ruv-Jd-syi"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="etr-l2-PnT" userLabel="Bottom Toolbar">
