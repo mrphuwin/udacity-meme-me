@@ -33,7 +33,11 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ljg-nw-4Od" userLabel="Top Toolbar">
                                 <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <items>
-                                    <barButtonItem image="square.and.arrow.up" catalog="system" id="Cw7-WR-lwO" userLabel="share button"/>
+                                    <barButtonItem image="square.and.arrow.up" catalog="system" id="Cw7-WR-lwO" userLabel="share button">
+                                        <connections>
+                                            <action selector="shareMeme:" destination="BYZ-38-t0r" id="UWA-Lb-JpV"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="tgR-sg-fi2"/>
                                     <barButtonItem title="Cancel" id="CO3-GM-vQi" userLabel="cancel button">
                                         <connections>
@@ -85,10 +89,12 @@
                     </view>
                     <connections>
                         <outlet property="bottomTextField" destination="7Xs-C8-ost" id="gkt-ye-oq0"/>
+                        <outlet property="bottomToolbar" destination="etr-l2-PnT" id="tI6-9i-hjc"/>
                         <outlet property="cameraButton" destination="qkX-Cb-U5a" id="PLs-AF-I22"/>
-                        <outlet property="imagePickerView" destination="ifw-Xh-sW4" id="QPi-gy-pYT"/>
+                        <outlet property="imageView" destination="ifw-Xh-sW4" id="QPi-gy-pYT"/>
                         <outlet property="shareButton" destination="Cw7-WR-lwO" id="3vQ-z9-mXa"/>
                         <outlet property="topTextField" destination="6yR-om-fZA" id="1nn-LU-PAl"/>
+                        <outlet property="topToolbar" destination="ljg-nw-4Od" id="00L-hY-TIt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
