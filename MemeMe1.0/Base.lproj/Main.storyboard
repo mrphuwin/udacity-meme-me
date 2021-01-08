@@ -35,13 +35,13 @@
                                 <items>
                                     <barButtonItem image="square.and.arrow.up" catalog="system" id="Cw7-WR-lwO" userLabel="share button">
                                         <connections>
-                                            <action selector="shareMeme:" destination="BYZ-38-t0r" id="UWA-Lb-JpV"/>
+                                            <action selector="shareButtonClicked:" destination="BYZ-38-t0r" id="UWA-Lb-JpV"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="tgR-sg-fi2"/>
                                     <barButtonItem title="Cancel" id="CO3-GM-vQi" userLabel="cancel button">
                                         <connections>
-                                            <action selector="cancel:" destination="BYZ-38-t0r" id="Ruv-Jd-syi"/>
+                                            <action selector="cancelButtonClicked:" destination="BYZ-38-t0r" id="Ruv-Jd-syi"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -52,12 +52,12 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="ZOj-fs-2T5"/>
                                     <barButtonItem image="camera" catalog="system" id="qkX-Cb-U5a" userLabel="camera button">
                                         <connections>
-                                            <action selector="pickCameraImage:" destination="BYZ-38-t0r" id="vkk-OO-x4Q"/>
+                                            <action selector="cameraButtonClicked:" destination="BYZ-38-t0r" id="vkk-OO-x4Q"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem title="Album" id="UTT-kt-raF" userLabel="album button">
                                         <connections>
-                                            <action selector="pickAlbumImage:" destination="BYZ-38-t0r" id="dU5-aQ-GVD"/>
+                                            <action selector="albumButtonClicked:" destination="BYZ-38-t0r" id="dU5-aQ-GVD"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="U4k-o2-Yg6"/>

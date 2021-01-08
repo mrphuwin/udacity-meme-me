@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ViewController: UIViewController {
     let DEFAULT_TOP_TEXT = "TOP"
     let DEFAULT_BOTTOM_TEXT = "BOTTOM"
 
@@ -73,35 +73,24 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         unsubscribeFromKeyboardNotifications()
     }
     
-    @IBAction func cancel(_ sender: Any) {
+    @IBAction func cancelButtonClicked(_ sender: Any) {
         resetMeme()
     }
         
-    @IBAction func pickAlbumImage(_ sender: Any) {
+    @IBAction func albumButtonClicked(_ sender: Any) {
         let picker = UIImagePickerController()
         picker.delegate = self
         picker.sourceType = .photoLibrary
         present(picker, animated: true, completion: nil)
     }
     
-    @IBAction func pickCameraImage(_ sender: Any) {
+    @IBAction func cameraButtonClicked(_ sender: Any) {
         let picker = UIImagePickerController()
         picker.delegate = self
         picker.sourceType = .camera
         present(picker, animated: true, completion: nil)
     }
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let image = info[.originalImage] as? UIImage {
-            setImage(image)
-            dismiss(animated: true, completion: nil)
-        }
-    }
-    
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        dismiss(animated: true, completion: nil)
-    }
-    
+
     // MARK: Keyboard show/hide notification handling
     
     func subscribeToKeyboardNotifications() {
@@ -136,7 +125,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     // MARK: Share meme
     
-    @IBAction func shareMeme(_ sender: Any) {
+    @IBAction func shareButtonClicked(_ sender: Any) {
         let image = generateMemedImage()
         let nextController = UIActivityViewController(activityItems: [image], applicationActivities: nil)
         nextController.completionWithItemsHandler = { (
@@ -189,5 +178,18 @@ extension ViewController: UITextFieldDelegate {
         // dismiss the keyboard when the user presses return
         textField.resignFirstResponder()
         return true
+    }
+}
+
+extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let image = info[.originalImage] as? UIImage {
+            setImage(image)
+            dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
     }
 }
