@@ -77,16 +77,17 @@ class ViewController: UIViewController {
     }
         
     @IBAction func albumButtonClicked(_ sender: Any) {
-        let picker = UIImagePickerController()
-        picker.delegate = self
-        picker.sourceType = .photoLibrary
-        present(picker, animated: true, completion: nil)
+        showImagePicker(.photoLibrary)
     }
     
     @IBAction func cameraButtonClicked(_ sender: Any) {
+        showImagePicker(.camera)
+    }
+    
+    func showImagePicker(_ sourceType: UIImagePickerController.SourceType) {
         let picker = UIImagePickerController()
         picker.delegate = self
-        picker.sourceType = .camera
+        picker.sourceType = sourceType
         present(picker, animated: true, completion: nil)
     }
 
