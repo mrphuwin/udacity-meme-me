@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF1FB4D425A58825005E7CAD /* Meme.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1FB4D325A58825005E7CAD /* Meme.swift */; };
 		BF577BFE2595C14700F4BC3B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF577BFD2595C14700F4BC3B /* AppDelegate.swift */; };
 		BF577C002595C14700F4BC3B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF577BFF2595C14700F4BC3B /* SceneDelegate.swift */; };
 		BF577C022595C14700F4BC3B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF577C012595C14700F4BC3B /* ViewController.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BF1FB4D325A58825005E7CAD /* Meme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meme.swift; sourceTree = "<group>"; };
 		BF577BFA2595C14700F4BC3B /* MemeMe1.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemeMe1.0.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF577BFD2595C14700F4BC3B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF577BFF2595C14700F4BC3B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				BF577C062595C14700F4BC3B /* Assets.xcassets */,
 				BF577C082595C14700F4BC3B /* LaunchScreen.storyboard */,
 				BF577C0B2595C14700F4BC3B /* Info.plist */,
+				BF1FB4D325A58825005E7CAD /* Meme.swift */,
 			);
 			path = MemeMe1.0;
 			sourceTree = "<group>";
@@ -138,6 +141,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF577C022595C14700F4BC3B /* ViewController.swift in Sources */,
+				BF1FB4D425A58825005E7CAD /* Meme.swift in Sources */,
 				BF577BFE2595C14700F4BC3B /* AppDelegate.swift in Sources */,
 				BF577C002595C14700F4BC3B /* SceneDelegate.swift in Sources */,
 			);
@@ -287,6 +291,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 65K8KU6B26;
 				INFOPLIST_FILE = MemeMe1.0/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -305,6 +310,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 65K8KU6B26;
 				INFOPLIST_FILE = MemeMe1.0/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
