@@ -9,6 +9,12 @@ import UIKit
 
 class MemeTableViewController: UITableViewController {
 
+    var memes: [Meme]! {
+        let object = UIApplication.shared.delegate
+        let appDelegate = object as! AppDelegate
+        return appDelegate.memes
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -17,29 +23,45 @@ class MemeTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        // Reload tableView whenever memes are added
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(_reload),
+            name: NSNotification.Name(rawValue: "memesUpdated"),
+            object: nil
+        )
+    }
+    
+    @objc func _reload() {
+        self.tableView.reloadData()
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return self.memes.count
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MemeTableCell", for: indexPath)
 
-        // Configure the cell...
+        let meme = self.memes[indexPath.row]
+        cell.imageView?.image = meme.memedImage
+        cell.textLabel?.text = meme.topText
 
         return cell
     }
-    */
+
+    @IBAction func addButtonClicked(_ sender: Any) {
+        let memeViewController = self.storyboard?.instantiateViewController(withIdentifier: "MemeViewController") as! ViewController
+        present(memeViewController, animated: true, completion: nil)
+    }
 
     /*
     // Override to support conditional editing of the table view.

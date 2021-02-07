@@ -137,6 +137,9 @@ class ViewController: UIViewController {
                 if completed {
                     self.memedImage = image
                     self.save()
+                    
+                    // Dismissing this view returns to the Sent Memes view
+                    self.dismiss(animated: true, completion: nil)
                 }
         }
         present(nextController, animated: true, completion: nil)
@@ -144,7 +147,20 @@ class ViewController: UIViewController {
     
     // Just saves the meme in memory for now.
     func save() {
-        let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imageView.image!, memedImage: memedImage)
+        let meme = Meme(
+            topText: topTextField.text!,
+            bottomText: bottomTextField.text!,
+            originalImage: imageView.image!,
+            memedImage: memedImage
+        )
+        
+        // Add it to the memes array in the Application Delegate
+        let object = UIApplication.shared.delegate
+        let appDelegate = object as! AppDelegate
+        appDelegate.memes.append(meme)
+
+        // Notify the app that memes has been updated
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "memesUpdated"), object: nil)
     }
     
     func generateMemedImage() -> UIImage {
