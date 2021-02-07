@@ -25,13 +25,34 @@ class MemeCollectionViewController: UICollectionViewController {
         // Error: "Could not cast value of type 'UICollectionViewCell' to 'MemeMe1_0.MemeCollectionCell'"
         //self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
-        // Reload tableView whenever memes are added
+        // Reload view whenever memes are added
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(_reload),
             name: NSNotification.Name(rawValue: "memesUpdated"),
             object: nil
         )
+        
+        func addMeme(_ imageName:String) {
+            if let image = UIImage(named: imageName) {
+                let meme = Meme(
+                    topText: imageName,
+                    bottomText: "FOOBAR",
+                    originalImage: image,
+                    memedImage: image
+                )
+                // Add it to the memes array in the Application Delegate
+                let object = UIApplication.shared.delegate
+                let appDelegate = object as! AppDelegate
+                appDelegate.memes.append(meme)
+            }
+        }
+        
+        addMeme("mushroom")
+        addMeme("toad")
+
+        // Notify the app that memes has been updated
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "memesUpdated"), object: nil)
     }
 
     @objc func _reload() {

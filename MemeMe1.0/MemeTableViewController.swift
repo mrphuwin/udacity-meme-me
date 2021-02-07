@@ -18,7 +18,7 @@ class MemeTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Reload tableView whenever memes are added
+        // Reload view whenever memes are added
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(_reload),
