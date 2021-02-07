@@ -73,7 +73,7 @@ class MemeViewController: UIViewController {
     }
     
     @IBAction func cancelButtonClicked(_ sender: Any) {
-        resetMeme()
+        dismiss(animated: true, completion: nil)
     }
         
     @IBAction func albumButtonClicked(_ sender: Any) {
