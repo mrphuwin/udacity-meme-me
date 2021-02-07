@@ -59,7 +59,7 @@ class MemeTableViewController: UITableViewController {
     }
 
     @IBAction func addButtonClicked(_ sender: Any) {
-        let memeViewController = self.storyboard?.instantiateViewController(withIdentifier: "MemeViewController") as! ViewController
+        let memeViewController = self.storyboard?.instantiateViewController(withIdentifier: "MemeViewController") as! MemeViewController
         present(memeViewController, animated: true, completion: nil)
     }
 

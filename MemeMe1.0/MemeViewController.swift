@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class MemeViewController: UIViewController {
     let DEFAULT_TOP_TEXT = "TOP"
     let DEFAULT_BOTTOM_TEXT = "BOTTOM"
 
@@ -183,7 +183,7 @@ class ViewController: UIViewController {
     
 }
 
-extension ViewController: UITextFieldDelegate {
+extension MemeViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         // clear the text field when the user begins editing
         textField.text = ""
@@ -197,7 +197,7 @@ extension ViewController: UITextFieldDelegate {
     }
 }
 
-extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension MemeViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[.originalImage] as? UIImage {
             setImage(image)
