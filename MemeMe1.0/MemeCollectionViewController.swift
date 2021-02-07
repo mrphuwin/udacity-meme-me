@@ -7,10 +7,16 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
+private let reuseIdentifier = "MemeCollectionCell"
 
 class MemeCollectionViewController: UICollectionViewController {
 
+    var memes: [Meme]! {
+        let object = UIApplication.shared.delegate
+        let appDelegate = object as! AppDelegate
+        return appDelegate.memes
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -18,9 +24,21 @@ class MemeCollectionViewController: UICollectionViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        // I commented this out to fix the following error when calling collectionView.dequeueReusableCell().
+        // Error: "Could not cast value of type 'UICollectionViewCell' to 'MemeMe1_0.MemeCollectionCell'"
+        //self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
-        // Do any additional setup after loading the view.
+        // Reload tableView whenever memes are added
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(_reload),
+            name: NSNotification.Name(rawValue: "memesUpdated"),
+            object: nil
+        )
+    }
+
+    @objc func _reload() {
+        self.collectionView.reloadData()
     }
 
     /*
@@ -37,21 +55,33 @@ class MemeCollectionViewController: UICollectionViewController {
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 0
+        return self.memes.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! MemeCollectionCell
     
-        // Configure the cell
-    
+        let meme = self.memes[indexPath.row]
+        cell.memeImageView?.image = meme.memedImage
+        
         return cell
+    }
+    
+    @IBAction func addButtonClicked(_ sender: Any) {
+        let memeViewController = self.storyboard?.instantiateViewController(withIdentifier: "MemeViewController") as! MemeViewController
+        present(memeViewController, animated: true, completion: nil)
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let detailView = self.storyboard?.instantiateViewController(withIdentifier: "MemeDetailViewController") as! MemeDetailViewController
+        detailView.meme = self.memes[indexPath.row]
+        self.navigationController?.pushViewController(detailView, animated: true)
     }
 
     // MARK: UICollectionViewDelegate
