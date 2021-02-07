@@ -77,6 +77,33 @@
             </objects>
             <point key="canvasLocation" x="-125" y="402"/>
         </scene>
+        <!--Meme Detail View Controller-->
+        <scene sceneID="DdK-6q-J3Z">
+            <objects>
+                <viewController storyboardIdentifier="MemeDetailViewController" id="zVm-bo-Bpj" customClass="MemeDetailViewController" customModule="MemeMe1_0" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="RGC-lE-zH4">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gHA-IP-IyI">
+                                <rect key="frame" x="87" y="384" width="240" height="128"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="lXB-e0-oM5"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="gHA-IP-IyI" firstAttribute="centerX" secondItem="RGC-lE-zH4" secondAttribute="centerX" id="1fO-36-BOk"/>
+                            <constraint firstItem="gHA-IP-IyI" firstAttribute="centerY" secondItem="RGC-lE-zH4" secondAttribute="centerY" id="od4-TL-7jF"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="gHA-IP-IyI" id="Oaq-oL-Gps"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Ci-ou-by1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="657" y="730"/>
+        </scene>
         <!--Meme View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>

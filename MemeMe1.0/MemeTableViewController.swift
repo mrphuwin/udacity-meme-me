@@ -62,6 +62,13 @@ class MemeTableViewController: UITableViewController {
         let memeViewController = self.storyboard?.instantiateViewController(withIdentifier: "MemeViewController") as! MemeViewController
         present(memeViewController, animated: true, completion: nil)
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailViewController = self.storyboard?.instantiateViewController(withIdentifier: "MemeDetailViewController") as! MemeDetailViewController
+        
+        detailViewController.meme = self.memes[indexPath.row]
+        self.navigationController?.pushViewController(detailViewController, animated: true)
+    }
 
     /*
     // Override to support conditional editing of the table view.
