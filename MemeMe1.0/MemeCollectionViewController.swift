@@ -16,6 +16,8 @@ class MemeCollectionViewController: UICollectionViewController {
         let appDelegate = object as! AppDelegate
         return appDelegate.memes
     }
+
+    @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,37 +34,38 @@ class MemeCollectionViewController: UICollectionViewController {
             name: NSNotification.Name(rawValue: "memesUpdated"),
             object: nil
         )
-        
-        func addMeme(_ imageName:String) {
-            if let image = UIImage(named: imageName) {
-                let meme = Meme(
-                    topText: imageName,
-                    bottomText: "FOOBAR",
-                    originalImage: image,
-                    memedImage: image
-                )
-                // Add it to the memes array in the Application Delegate
-                let object = UIApplication.shared.delegate
-                let appDelegate = object as! AppDelegate
-                appDelegate.memes.append(meme)
-            }
-        }
-        
-        addMeme("mushroom")
-        addMeme("toad")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
 
-        // Notify the app that memes has been updated
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "memesUpdated"), object: nil)
+        setFlowLayout(self.view.bounds.size.width)
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        
+        // NOTE: The view size is not updated until after the transition. i.e. Height and width will switch values afterward.
+        setFlowLayout(self.view.bounds.size.height)
     }
 
     @objc func _reload() {
         self.collectionView.reloadData()
     }
 
+    func setFlowLayout(_ frameWidth: CGFloat) {
+        let cellWidth:CGFloat = 120
+        let nCells:CGFloat = floor(frameWidth / cellWidth)
+        let space:CGFloat = floor(frameWidth.truncatingRemainder(dividingBy: cellWidth) / (nCells-1))
+        
+        self.flowLayout.minimumLineSpacing = space
+        self.flowLayout.minimumInteritemSpacing = space
+        self.flowLayout.itemSize = CGSize(width: cellWidth, height: cellWidth)
+    }
+    
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
