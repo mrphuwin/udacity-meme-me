@@ -8,6 +8,7 @@
 import UIKit
 
 private let reuseIdentifier = "MemeCollectionCell"
+private let cellSize = CGSize(width: 120, height: 120)
 
 class MemeCollectionViewController: UICollectionViewController {
 
@@ -22,16 +23,17 @@ class MemeCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Register cell classes
-        // I commented this out to fix the following error when calling collectionView.dequeueReusableCell().
-        // Error: "Could not cast value of type 'UICollectionViewCell' to 'MemeMe1_0.MemeCollectionCell'"
-        //self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-        // Reload view whenever memes are added
+        // Reload view whenever memes are added/removed
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(_reload),
             name: NSNotification.Name(rawValue: "memesUpdated"),
+            object: nil
+        )
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(_reload),
+            name: NSNotification.Name(rawValue: "memeRemoved"),
             object: nil
         )
     }
@@ -54,20 +56,16 @@ class MemeCollectionViewController: UICollectionViewController {
     }
 
     func setFlowLayout(_ frameWidth: CGFloat) {
-        let cellWidth:CGFloat = 120
-        let nCells:CGFloat = floor(frameWidth / cellWidth)
-        let space:CGFloat = floor(frameWidth.truncatingRemainder(dividingBy: cellWidth) / (nCells-1))
+        // calculate horizontal and vertical spacing between cells to make them identical
+        let nCells:CGFloat = floor(frameWidth / cellSize.width)
+        let space:CGFloat = floor(frameWidth.truncatingRemainder(dividingBy: cellSize.width) / (nCells-1))
         
         self.flowLayout.minimumLineSpacing = space
         self.flowLayout.minimumInteritemSpacing = space
-        self.flowLayout.itemSize = CGSize(width: cellWidth, height: cellWidth)
+        self.flowLayout.itemSize = cellSize
     }
     
     // MARK: UICollectionViewDataSource
-
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.memes.count
@@ -88,8 +86,8 @@ class MemeCollectionViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let detailView = self.storyboard?.instantiateViewController(withIdentifier: "MemeDetailViewController") as! MemeDetailViewController
-        detailView.meme = self.memes[indexPath.row]
-        self.navigationController?.pushViewController(detailView, animated: true)
+        let detailViewController = self.storyboard?.instantiateViewController(withIdentifier: "MemeDetailViewController") as! MemeDetailViewController
+        detailViewController.meme = self.memes[indexPath.row]
+        self.navigationController?.pushViewController(detailViewController, animated: true)
     }
 }
